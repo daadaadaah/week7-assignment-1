@@ -1,12 +1,19 @@
 import React from 'react';
 
-import { MemoryRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { render, fireEvent } from '@testing-library/react';
 
 import LoginFormContainer from './LoginFormContainer';
 
 describe('LoginFormContainer', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   it('renders input controls', () => {
     const { getByLabelText } = render(
       <LoginFormContainer />,
@@ -22,5 +29,7 @@ describe('LoginFormContainer', () => {
     );
 
     fireEvent.click(getByText('Log In'));
+
+    expect(dispatch).toBeCalled();
   });
 });
