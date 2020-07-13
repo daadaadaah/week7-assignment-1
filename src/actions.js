@@ -85,3 +85,12 @@ export function loadRestaurant({ restaurantId }) {
     dispatch(setRestaurant(restaurant));
   };
 }
+
+export function requestLogin() {
+  return async (dispatch, getState) => {
+    // state : email, password // TODO : 상태를추가해주는 컴포넌트 만들기
+    // HTTP POST with email, password -> getState
+    // dispatch(setAccessToken(accessToken))
+
+  };
+}
