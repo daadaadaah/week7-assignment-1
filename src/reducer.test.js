@@ -21,6 +21,7 @@ describe('reducer', () => {
       selectedRegion: null,
       selectedCategory: null,
       loginFields: {},
+      accessToken: '',
     };
 
     it('returns initialState', () => {
@@ -167,7 +168,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setAccessToken('TOKEN'));
 
-      expect(state.accessToken).teBe('TOKEN');
+      expect(state.accessToken).toBe('TOKEN');
     });
   });
 });
