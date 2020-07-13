@@ -11,6 +11,11 @@ export default function LoginFormContainer() {
         <label htmlFor="login-password">Password</label>
         <input type="password" id="login-password" />
       </div>
+      <button
+        type="text"
+      >
+        Log In
+      </button>
     </>
 
   );
