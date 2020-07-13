@@ -3,6 +3,7 @@ import {
   fetchCategories,
   fetchRestaurants,
   fetchRestaurant,
+  postLogin,
 } from './services/api';
 
 export function setRegions(regions) {
@@ -95,9 +96,8 @@ export function changeLoginField({ name, value }) {
 
 export function requestLogin() {
   return async (dispatch, getState) => {
-    // state : email, password // TODO : 상태를추가해주는 컴포넌트 만들기
-    // HTTP POST with email, password -> getState
+    const { loginFields: { email, password } } = getState();
+    const { accessToken } = postLogin({ email, password });
     // dispatch(setAccessToken(accessToken))
-
   };
 }
