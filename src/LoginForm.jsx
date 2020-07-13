@@ -1,10 +1,6 @@
 import React from 'react';
 
-export default function LoginForm() {
-  function handleClick() {
-
-  }
-
+export default function LoginForm({ onSubmit }) {
   return (
     <>
       <div>
@@ -15,7 +11,7 @@ export default function LoginForm() {
         <label htmlFor="login-password">Password</label>
         <input type="password" id="login-password" />
       </div>
-      <button type="button" onClick={handleClick}> Log In</button>
+      <button type="button" onClick={onSubmit}>Log In</button>
     </>
   );
 }
