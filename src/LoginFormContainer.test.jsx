@@ -19,7 +19,6 @@ describe('LoginFormContainer', () => {
         email: 'test@test',
         password: '1234',
       },
-
     }));
   });
 
