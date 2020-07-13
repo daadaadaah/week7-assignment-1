@@ -35,9 +35,7 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const regions = [{ id: 1, name: '서울' }];
 
       const state = reducer(initialState, setRegions(regions));
 
@@ -51,9 +49,7 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const categories = [{ id: 1, name: '한식' }];
 
       const state = reducer(initialState, setCategories(categories));
 
@@ -67,9 +63,7 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const restaurants = [{ id: 1, name: '마법사주방' }];
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
@@ -95,9 +89,7 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions: [{ id: 1, name: '서울' }],
         selectedRegion: null,
       };
 
@@ -113,9 +105,7 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories: [{ id: 1, name: '한식' }],
         selectedCategory: null,
       };
 
@@ -129,17 +119,42 @@ describe('reducer', () => {
   });
 
   describe('changeLoginField', () => {
-    it('changes login field', () => {
-      const initialState = {
-        loginFields: {
-          email: '',
-          password: '',
-        },
-      };
+    context('when email is changed', () => {
+      it('changes login field', () => {
+        const initialState = {
+          loginFields: {
+            email: 'email',
+            password: 'password',
+          },
+        };
 
-      const state = reducer(initialState, changeLoginField({ name: 'email', value: 'test@' }));
+        const state = reducer(
+          initialState,
+          changeLoginField({ name: 'email', value: 'test@' }),
+        );
 
-      expect(state.loginFields.email).toBe('test@');
+        expect(state.loginFields.email).toBe('test@');
+        expect(state.loginFields.password).toBe('password');
+      });
+    });
+
+    context('when password is changed', () => {
+      it('changes login field', () => {
+        const initialState = {
+          loginFields: {
+            email: 'email',
+            password: 'password',
+          },
+        };
+
+        const state = reducer(
+          initialState,
+          changeLoginField({ name: 'password', value: 'password1234' }),
+        );
+
+        expect(state.loginFields.email).toBe('email');
+        expect(state.loginFields.password).toBe('password1234');
+      });
     });
   });
 });
