@@ -12,7 +12,7 @@ describe('LoginFormContainer', () => {
       <LoginFormContainer />,
     );
 
-    expect(getByLabelText('Username')).not.toBeNull();
+    expect(getByLabelText('E-mail')).not.toBeNull();
     expect(getByLabelText('Password')).not.toBeNull();
   });
 });
