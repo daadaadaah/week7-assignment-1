@@ -86,6 +86,13 @@ export function loadRestaurant({ restaurantId }) {
   };
 }
 
+export function changeLoginField({ name, value }) {
+  return {
+    type: 'changeLoginField',
+    payload: { name, value },
+  };
+}
+
 export function requestLogin() {
   return async (dispatch, getState) => {
     // state : email, password // TODO : 상태를추가해주는 컴포넌트 만들기
