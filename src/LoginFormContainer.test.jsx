@@ -30,6 +30,6 @@ describe('LoginFormContainer', () => {
 
     fireEvent.click(getByText('Log In'));
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled(); // cf. mockStore 쓰면, 쫌더 무엇이 dispatch 되는지 알 수 있다.
   });
 });
