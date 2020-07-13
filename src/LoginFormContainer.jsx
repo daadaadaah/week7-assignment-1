@@ -4,17 +4,21 @@ import { useDispatch } from 'react-redux';
 
 import LoginForm from './LoginForm';
 
-import { requestLogin } from './actions';
+import { requestLogin, changeLoginField } from './actions';
 
 export default function LoginFormContainer() {
   const dispatch = useDispatch();
 
+  function handleChange({ name, value }) {
+    dispatch(changeLoginField({ name, value })); // TODO : 상태가 필요하네? -> Redux로 가자!
+  }
+
   function handleSubmit() {
-    dispatch(requestLogin()); // TODO : 상태가 필요하네? -> Redux로 가자!
+    dispatch(requestLogin());
   }
 
   return (
-    <LoginForm onSubmit={handleSubmit} />
+    <LoginForm onChange={handleChange} onSubmit={handleSubmit} />
 
   );
 }
