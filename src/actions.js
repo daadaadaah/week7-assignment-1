@@ -87,6 +87,13 @@ export function loadRestaurant({ restaurantId }) {
   };
 }
 
+export function setAccessToken(accessToken) {
+  return {
+    type: 'setAccessToken',
+    payload: { accessToken },
+  };
+}
+
 export function changeLoginField({ name, value }) {
   return {
     type: 'changeLoginField',
@@ -97,7 +104,7 @@ export function changeLoginField({ name, value }) {
 export function requestLogin() {
   return async (dispatch, getState) => {
     const { loginFields: { email, password } } = getState();
-    const { accessToken } = postLogin({ email, password });
-    // dispatch(setAccessToken(accessToken))
+    const accessToken = postLogin({ email, password });
+    dispatch(setAccessToken(accessToken));
   };
 }
