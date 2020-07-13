@@ -5,18 +5,29 @@ import { render, fireEvent } from '@testing-library/react';
 import LoginForm from './LoginForm';
 
 describe('LoginForm', () => {
-  it('renders input controls and listens change events', () => {
-    const handleChange = jest.fn();
+  const handleChange = jest.fn();
+  const handleSubmit = jest.fn();
 
-    const email = 'test@test';
-    const password = '1234';
+  beforeEach(() => {
+    handleChange.mockClear();
+    handleSubmit.mockClear();
+  });
 
-    const { getByLabelText } = render(
+  function renderLoginForm({ email, password }) {
+    return render(
       <LoginForm
         fields={{ email, password }}
+        onSubmit={handleSubmit}
         onChange={handleChange}
       />,
     );
+  }
+
+  it('renders input controls and listens change events', () => {
+    const email = 'test@test';
+    const password = '1234';
+
+    const { getByLabelText } = renderLoginForm({ email, password });
 
     const controls = [
       {
@@ -46,11 +57,7 @@ describe('LoginForm', () => {
   });
 
   it('renders [Log In] button', () => {
-    const handleSubmit = jest.fn();
-
-    const { getByText } = render(
-      <LoginForm onSubmit={handleSubmit} />,
-    );
+    const { getByText } = renderLoginForm({ });
 
     fireEvent.click(getByText('Log In'));
 
