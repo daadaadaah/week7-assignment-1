@@ -42,7 +42,7 @@ describe('RestaurantContainer', () => {
       expect(container).toHaveTextContent('서울시');
     });
 
-    it('renders review write form', () => {
+    it('renders review write form for score', () => {
       const { getByLabelText } = renderRestaurantContainer();
 
       fireEvent.change(getByLabelText('평점'), {
@@ -53,6 +53,10 @@ describe('RestaurantContainer', () => {
         type: 'changeReviewField',
         payload: { name: 'score', value: '5' },
       });
+    });
+
+    it('renders review write form for description', () => {
+      const { getByLabelText } = renderRestaurantContainer();
 
       fireEvent.change(getByLabelText('리뷰 내용'), {
         target: { value: '정말 최고 예요' },
