@@ -49,13 +49,19 @@ describe('RestaurantContainer', () => {
         target: { value: '5' },
       });
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledWith({
+        type: 'changeReviewField',
+        payload: { name: 'score', value: '5' },
+      });
 
       fireEvent.change(getByLabelText('리뷰 내용'), {
         target: { value: '정말 최고 예요' },
       });
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledWith({
+        type: 'changeReviewField',
+        payload: { name: 'description', value: '정말 최고 예요' },
+      });
     });
   });
 
