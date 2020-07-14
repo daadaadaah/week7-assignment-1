@@ -41,6 +41,11 @@ describe('RestaurantContainer', () => {
       expect(container).toHaveTextContent('마법사주방');
       expect(container).toHaveTextContent('서울시');
     });
+
+    it('renders review write form', () => {
+      const { queryByLabelText } = renderRestaurantContainer();
+      expect(queryByLabelText('평점')).not.toBeNull();
+    });
   });
 
   context('without restaurant', () => {
@@ -51,10 +56,5 @@ describe('RestaurantContainer', () => {
 
       expect(container).toHaveTextContent('Loading');
     });
-  });
-
-  it('renders review write form', () => {
-    const { queryByLabelText } = renderRestaurantContainer();
-    expect(queryByLabelText('평점')).not.toBeNull();
   });
 });
