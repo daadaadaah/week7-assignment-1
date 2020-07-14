@@ -12,15 +12,27 @@ import { get } from './utils';
 
 function ReviewForm() {
   return (
-    <div>
-      <label htmlFor="review-score">
-        평점
-      </label>
-      <input
-        type="text"
-        id="review-score"
-      />
-    </div>
+    <>
+      <div>
+        <label htmlFor="review-score">
+          평점
+        </label>
+        <input
+          type="number"
+          id="review-score"
+        />
+      </div>
+      <div>
+        <label htmlFor="review-description">
+          리뷰 내용
+        </label>
+        <input
+          type="text"
+          id="review-description"
+        />
+      </div>
+    </>
+
   );
 }
 
