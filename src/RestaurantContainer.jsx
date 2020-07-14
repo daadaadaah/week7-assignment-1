@@ -58,10 +58,14 @@ export default function RestaurantContainer({ restaurantId }) {
     );
   }
 
+  function handleChange() {
+    dispatch(changeReviewField({ name, value }));
+  }
+
   return (
     <>
       <RestaurantDetail restaurant={restaurant} />
-      <ReviewForm />
+      <ReviewForm onChange={handleChange} />
     </>
   );
 }
