@@ -10,7 +10,12 @@ import {
 
 import { get } from './utils';
 
-function ReviewForm() {
+function ReviewForm({ onChange }) {
+  function handleChange(event) {
+    const { target: { name, value } } = event;
+    onChange({ name, value });
+  }
+
   return (
     <>
       <div>
@@ -20,6 +25,7 @@ function ReviewForm() {
         <input
           type="number"
           id="review-score"
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -29,6 +35,7 @@ function ReviewForm() {
         <input
           type="text"
           id="review-description"
+          onChange={handleChange}
         />
       </div>
     </>
