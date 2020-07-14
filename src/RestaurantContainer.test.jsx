@@ -49,9 +49,13 @@ describe('RestaurantContainer', () => {
         target: { value: '5' },
       });
 
+      expect(dispatch).toBeCalled();
+
       fireEvent.change(getByLabelText('리뷰 내용'), {
         target: { value: '정말 최고 예요' },
       });
+
+      expect(dispatch).toBeCalled();
     });
   });
 
