@@ -42,30 +42,50 @@ describe('RestaurantContainer', () => {
       expect(container).toHaveTextContent('서울시');
     });
 
-    it('renders review write form for score', () => {
+    it('renders review write form', () => {
       const { getByLabelText } = renderRestaurantContainer();
 
-      fireEvent.change(getByLabelText('평점'), {
-        target: { value: '5' },
+      const controls = [
+        {
+          label: '평점',
+          name: 'score',
+          value: '5',
+        },
+        {
+          label: '리뷰 내용',
+          name: 'description',
+          value: '정말 최고 예요',
+        },
+      ];
+
+      controls.forEach(({ label, name, value }) => {
+        fireEvent.change(getByLabelText(label), {
+          target: { value },
+        });
+
+        expect(dispatch).toBeCalledWith({
+          type: 'changeReviewField',
+          payload: { name, value },
+        });
       });
 
-      expect(dispatch).toBeCalledWith({
-        type: 'changeReviewField',
-        payload: { name: 'score', value: '5' },
-      });
-    });
+      // fireEvent.change(getByLabelText('평점'), {
+      //   target: { value: '5' },
+      // });
 
-    it('renders review write form for description', () => {
-      const { getByLabelText } = renderRestaurantContainer();
+      // expect(dispatch).toBeCalledWith({
+      //   type: 'changeReviewField',
+      //   payload: { name: 'score', value: '5' },
+      // });
 
-      fireEvent.change(getByLabelText('리뷰 내용'), {
-        target: { value: '정말 최고 예요' },
-      });
+      // fireEvent.change(getByLabelText('리뷰 내용'), {
+      //   target: { value: '정말 최고 예요' },
+      // });
 
-      expect(dispatch).toBeCalledWith({
-        type: 'changeReviewField',
-        payload: { name: 'description', value: '정말 최고 예요' },
-      });
+      // expect(dispatch).toBeCalledWith({
+      //   type: 'changeReviewField',
+      //   payload: { name: 'description', value: '정말 최고 예요' },
+      // });
     });
   });
 
