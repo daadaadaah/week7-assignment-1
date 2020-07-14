@@ -193,7 +193,7 @@ describe('reducer', () => {
         }),
       );
 
-      expect(state.reviewFields.score).toBe('score');
+      expect(state.reviewFields.score).toBe('5');
     });
   });
 });
